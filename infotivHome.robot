@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation   This is test suite of infotiv rental car webpage
-Resource        ../Resources/keywords.robot
+Resource        keywords.robot
 Library         SeleniumLibrary
 Test Setup      Begin Web Test
 Test Teardown   End Web Test
