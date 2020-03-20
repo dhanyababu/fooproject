@@ -132,8 +132,7 @@ Should Be Able to Select A car
         Click Button                        xpath://*[@id="ms-list-2"]/button
         Select Checkbox                                         id:ms-opt-6
         Click Element                                           id:rightpane
-       	Wait Until Page Contains                                id:carSelect1
-	Click Element                       			 id:questionText
+       	Sleep 						5s
         Click Element                                           id:carSelect1
         ${pickup_date} =                    Get Text            id:startDate
         Should Be Equal                    ${pickup_date}       Pickup date: 2020-03-20
@@ -197,10 +196,9 @@ When User should be able to enter all the required for booking a car
         Select Checkbox                      id:ms-opt-1
         Click Button                         xpath://*[@id="ms-list-2"]/button
         Select Checkbox                      id:ms-opt-5
-        Click Element                        id:rightpane
-        Wait Until Page Contains             id:carSelect1
-	Click Element                        id:questionText
-        Click Element                        id:carSelect1
+        Click Element                                           id:rightpane
+       	Sleep 5s
+        Click Element                                           id:carSelect1
         ${pickup_date} =                    Get Text                id:startDate
         Should Be Equal                     ${pickup_date}          Pickup date: 2020-03-20
         ${return_date} =                    Get Text                id:endDate
