@@ -157,10 +157,13 @@ Verify whether car is booked or not
         should be equal                      ${Passengers}                  5
 
 Should be able to cancel Booking
-	Click Element                       id:rightpane
-	Sleep				    2s
-        Click Button                        id:unBook1
+        Click Element                       id:rightpane
+        Sleep                               5s
+        Click Element                       xpath://*[@id="unBook1"]
+        sleep                               3s
         Handle Alert                        ACCEPT
+
+
 
 Check Navigation Between Home And About And Create User Page
         Go To                               http://rental33.infotiv.net/webpage/html/gui/about.php
@@ -221,7 +224,7 @@ Then Should be able book a car succesfully
         ${Booked_Car} =                      Get Text                       id:make1
         Should Be Equal                      ${Booked_Car}                  Audi
         ${Booked_Start_Date} =               Get Text                       id:startDate1
-        ${current_date} =                    Get Current Date                local                             result_format=%Y-%m-%d
+        ${current_date} =                    Get Current Date               local                             result_format=%Y-%m-%d
         ${Book_Start_date} =                 Add Time To Date               ${current_date}      4 days       result_format=%Y-%m-%d
         Should Be Equal                      ${Booked_Start_Date}           ${Book_Start_date}
         ${Booked_End_Date} =                 Get Text                       id:endDate1
@@ -230,10 +233,12 @@ Then Should be able book a car succesfully
         Should Be Equal                      ${Booked_End_Date}             ${Book_End_date}
         ${Passengers} =                      Get Text                       id:passengers1
         should be equal                      ${Passengers}                  2
-	Click Element                        id:rightpane
-	Sleep				     2s
-        Click Button                         id:unBook1
-        Handle Alert                         ACCEPT
+        Click Element                       id:rightpane
+        Sleep                               5s
+        Click Element                       xpath://*[@id="unBook1"]
+        sleep                               3s
+        Handle Alert                        ACCEPT
+        Sleep                               2s
 
 
 End Web Test
