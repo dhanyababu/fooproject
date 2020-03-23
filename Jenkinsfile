@@ -68,7 +68,7 @@ pipeline {
     post {
         always {
             junit '**/TEST*.xml'
-            step([cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
+            step([$class: 'CoberturaPublisher'autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
             emailext attachLog: true, attachmentsPattern: '**/TEST*xml',
             body: '', recipientProviders: [culprits()], subject:
             '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!'
