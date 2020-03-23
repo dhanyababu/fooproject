@@ -157,6 +157,8 @@ Verify whether car is booked or not
         should be equal                      ${Passengers}                  5
 
 Should be able to cancel Booking
+	Click Element                       id:rightpane
+	Sleep				    2s
         Click Button                        id:unBook1
         Handle Alert                        ACCEPT
 
@@ -228,6 +230,8 @@ Then Should be able book a car succesfully
         Should Be Equal                      ${Booked_End_Date}             ${Book_End_date}
         ${Passengers} =                      Get Text                       id:passengers1
         should be equal                      ${Passengers}                  2
+	Click Element                        id:rightpane
+	Sleep				     2s
         Click Button                         id:unBook1
         Handle Alert                         ACCEPT
 
