@@ -25,13 +25,14 @@ pipeline {
                      junit '**/*xml'
                 }
             }
+             post {
+                            always {
+                                junit '**/nosetests.xml'
+                                step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
+                            }
+                    }
         }
-        post {
-                always {
-                    junit '**/nosetests.xml'
-                    step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
-                }
-        }
+
         stage('robot') {
                     steps {
                         sh 'robot -d results --variable BROWSER:headlesschrome infotivHome.robot'
